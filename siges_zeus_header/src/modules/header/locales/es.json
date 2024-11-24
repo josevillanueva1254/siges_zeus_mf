@@ -1,0 +1,10 @@
+{
+    "greeting": "¡Hola, Usuario!",
+    "menu": {
+      "profile": "Perfil",
+      "settings": "Configuración",
+      "logout": "Cerrar Sesión"
+    },
+    "title": "SIGES Zeus"
+  }
+  
