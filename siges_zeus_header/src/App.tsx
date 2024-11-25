@@ -1,28 +1,23 @@
 import React from 'react';
-import type { MenuProps } from 'antd';
-import { Layout, Menu} from 'antd';
-
-const { Header} = Layout;
-
-const items1: MenuProps['items'] = ['1', '2', '3'].map((key) => ({
-  key,
-  label: `nav ${key}`,
-})); 
+import { Header } from './modules/header';
 
 const App: React.FC = () => {
+  const handleAlertClick = () => {
+    console.log('Alerta clickeada');
+  };
+
+  const handleProfileClick = () => {
+    console.log('Perfil clickeado');
+  };
+
   return (
-    <Layout>
-      <Header style={{ display: 'flex', alignItems: 'center' }}>
-        <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['2']}
-          items={items1}
-          style={{ flex: 1, minWidth: 0 }}
-        />
-      </Header> 
-    </Layout>
+    <div>
+      <Header
+        userName="John Doe"
+        onAlertClick={handleAlertClick}
+        onProfileClick={handleProfileClick}
+      />
+    </div>
   );
 };
 

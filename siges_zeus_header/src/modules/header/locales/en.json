@@ -1,10 +1,5 @@
 {
-    "greeting": "Hello, User!",
-    "menu": {
-      "profile": "Profile",
-      "settings": "Settings",
-      "logout": "Logout"
-    },
-    "title": "SIGES Zeus"
-  }
-  
+  "nav1": "Home",
+  "nav2": "About",
+  "nav3": "Contact"
+}
