@@ -1,4 +1,4 @@
-
+Como experto en programación, quiero que me ayudes con mi proyecto que es un sistema de gestion empresarial llamado Zeus, te alcanzo el contexto:
 # siges_zeus_mf
 Proyecto utiizando microfront con React + Vite + and
 La arquitectura basada en componentes
@@ -17,6 +17,8 @@ siges_zeus_mf/
     └── src/
         ├── App.tsx                   # Componente raíz
         ├── main.tsx                  # Punto de entrada
+        ├── vite-env.d.ts
+        ├── shared/                   # Recursos compartido
         ├── assets/                   # Recursos estáticos (imágenes, fuentes, etc.)
         │   └── images/
         │       ├── logo.png
