@@ -1,30 +1,24 @@
 import React from 'react';
-import { Layout, Space } from 'antd';
+import { Layout, Divider, Space } from 'antd';
 import { HeaderLogo } from './HeaderLogo';
 import { AlertsDropdown } from './AlertsDropdown';
 import { ProfileDropdown } from './ProfileDropdown';
-import './header.css';
+import styles from './header.module.css';
 
 const { Header: AntdHeader } = Layout;
 
 interface HeaderProps {
   userName: string;
   onLogoClick?: () => void;
-  onLogout: () => void;
 }
 
-export const Header: React.FC<HeaderProps> = ({ userName, onLogoClick, onLogout }) => (
-  <AntdHeader className="header">
-    {/* Logotipo */}
+export const Header: React.FC<HeaderProps> = ({ userName, onLogoClick }) => (
+  <AntdHeader className={styles.header}>
     <HeaderLogo onClick={onLogoClick} />
-
-    {/* Contenedor derecho */}
-    <Space size="large" className="header-right">
-      {/* Dropdown de alertas */}
+    <Space size="large" className={styles['header-right']}>
       <AlertsDropdown />
-
-      {/* Dropdown del perfil */}
-      <ProfileDropdown userName={userName} onLogout={onLogout} />
+      <Divider type="vertical" />
+      <ProfileDropdown userName={userName} />
     </Space>
   </AntdHeader>
 );

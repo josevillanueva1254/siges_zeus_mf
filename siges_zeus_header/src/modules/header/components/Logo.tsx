@@ -6,8 +6,8 @@ export const Logo: React.FC = () => {
     <div
       className="demo-logo"
       style={{
-        width: '120px',
-        height: '31px',
+        width: '160px',
+        height: '61px',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',

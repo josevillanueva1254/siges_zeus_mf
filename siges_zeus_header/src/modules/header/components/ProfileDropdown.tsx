@@ -1,17 +1,17 @@
 import React from 'react';
-import { List, Avatar, Dropdown, Typography } from 'antd';
-import { UserOutlined } from '@ant-design/icons';
+import { List, Button , Dropdown, Avatar, Typography } from 'antd';
+import { UserOutlined, LogoutOutlined } from '@ant-design/icons';
+import styles from './ProfileDropdown.module.css';
 
-const { Text } = Typography; // Extrae el componente Text de Typography
+const { Text } = Typography;
 
 interface ProfileDropdownProps {
   userName: string;
-  onLogout: () => void;
 }
 
-export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ userName, onLogout }) => {
-  const profileContent = (
-    <div className="dropdown-content">
+export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ userName }) => {
+  const menuItems = (
+    <div className={styles['profile-dropdown']}>
       <List>
         <List.Item>
           <Text strong>Nombre: </Text>
@@ -26,30 +26,25 @@ export const ProfileDropdown: React.FC<ProfileDropdownProps> = ({ userName, onLo
           <Text>Administrador</Text>
         </List.Item>
         <List.Item>
-          <button
-            onClick={onLogout}
-            style={{
-              backgroundColor: '#FF4D4F',
-              color: '#fff',
-              border: 'none',
-              padding: '8px 12px',
-              borderRadius: '4px',
-              cursor: 'pointer',
-              width: '100%',
-            }}
+          <Button 
+            className={styles['logout-button']} 
+            type="primary" // Opcional: Estilo del botón
+            danger        // Opcional: Cambia el botón a un estilo rojo
+            icon={<LogoutOutlined />} // Icono para el botón
+            onClick={() => console.log('Cerrando sesión...')}
           >
             Cerrar sesión
-          </button>
+          </Button>
         </List.Item>
       </List>
     </div>
   );
 
   return (
-    <Dropdown overlay={profileContent} placement="bottomRight" trigger={['click']}>
-      <div style={{ cursor: 'pointer' }}>
-        <Text strong>{userName}</Text>
-        <Avatar icon={<UserOutlined />} />
+    <Dropdown overlay={menuItems} placement="bottomRight" trigger={['click']}>
+      <div className={styles['profile-section']}>
+        <Text  className={styles['profile-text']}  strong>{userName}</Text>
+        <Avatar  className={styles['profile-text']} icon={<UserOutlined />} />
       </div>
     </Dropdown>
   );
