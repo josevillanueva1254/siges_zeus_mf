@@ -169,3 +169,12 @@ Deberías obtener los mismos resultados que en la base de datos principal. Si ve
 
 
 *******************************
+
+**********************************
+Puedes listar todas las redes de Docker que tienes creadas ejecutando el siguiente comando en tu terminal:
+    docker network ls
+***********************************
+Ver detalles de una red específica:
+Si deseas inspeccionar una red específica (por ejemplo, siges_zeus_network), usa:
+
+    docker network inspect siges_zeus_network

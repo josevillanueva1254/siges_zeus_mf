@@ -1,0 +1,29 @@
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  # Monitoreo del propio Prometheus
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Monitoreo de bases de datos PostgreSQL
+  - job_name: 'postgresql_primary'
+    static_configs:
+      - targets: ['postgres_primary:9187']  # Exportador en el proyecto de BD
+
+  - job_name: 'postgresql_replica'
+    static_configs:
+      - targets: ['postgres_replica:9187']  # Exportador en el proyecto de BD
+
+  # Monitoreo de microservicios
+  #- job_name: 'microservices'
+    #static_configs:
+      #- targets:
+          #- 'service1:3001'
+          #- 'service2:3002'
+
+  # Monitoreo de microfrontends
+  #- job_name: 'microfrontends'
+   # static_configs:
+   #   - targets: ['frontend_service:8080']

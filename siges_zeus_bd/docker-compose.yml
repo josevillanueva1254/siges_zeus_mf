@@ -22,6 +22,9 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - siges_zeus_network
+      - siges_zeus_network_monitoring  # Conexión al sistema de monitoreo
 
   replica:
     image: postgres:15
@@ -47,7 +50,18 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    networks:
+      - siges_zeus_network
+      - siges_zeus_network_monitoring  # Conexión al sistema de monitoreo
 
 volumes:
   primary_data:
   replica_data:
+
+networks:
+  siges_zeus_network:
+    name: siges_zeus_network  # Red principal
+    driver: bridge
+  siges_zeus_network_monitoring:
+    name: siges_zeus_network_monitoring  # Red para monitoreo
+    driver: bridge

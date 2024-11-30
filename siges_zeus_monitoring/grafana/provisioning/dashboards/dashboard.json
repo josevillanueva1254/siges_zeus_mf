@@ -1,0 +1,30 @@
+{
+    "dashboard": {
+      "title": "System Overview",
+      "panels": [
+        {
+          "type": "graph",
+          "title": "CPU Usage",
+          "targets": [
+            {
+              "expr": "rate(process_cpu_seconds_total[1m])",
+              "legendFormat": "{{job}}",
+              "refId": "A"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "title": "Service Health",
+          "targets": [
+            {
+              "expr": "up",
+              "legendFormat": "{{job}}",
+              "refId": "B"
+            }
+          ]
+        }
+      ]
+    }
+  }
+  
