@@ -1,50 +1,48 @@
-# React + TypeScript + Vite
+Estoy creando mi proyecto que se llama Zeus: Sistema de Gestión. 
+Proyecto Implementara el Front con una arquitectura de Microfront y utiliaremos Vite + React + TS + Antd. El proyecto es generado con Vite.
+Ahorita nos estamos enfocando netamente en el UI y ya tenemos una estructura definida.
+Ya hemos creado el Microfront que sera el Header y ahora estamos creando el microfront que sera el Menu Principal que mostrara todos los modulos y opciones de Zeus.
+Esta es la estructura de Mi  microfront que tengo actualmente:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Comando para crear proyecto Vite: npm create vite siges_zeus_body
 
-Currently, two official plugins are available:
+siges_zeus_body/
+├── public/                    # Archivos estáticos públicos
+├── src/
+│   ├── shared/                # Recursos compartidos
+│   │   ├── i18n/              # Manejo de internacionalización
+│   │   │   ├── config.ts      # Configuración de i18n
+│   │   │   ├── index.ts       # Inicialización de i18n
+│   │   │   ├── locales/       # Traducciones globales
+│   │   │   │   ├── en/common.json
+│   │   │   │   └── es/common.json
+│   ├── modules/               # Módulos funcionales
+│   │   ├── menu/            # Módulo Menu
+│   │   │   ├── components/    # Componentes específicos del Menu
+│   │   │   │   └── Menu.tsx
+│   │   │   ├── locales/       # Traducciones específicas del Menu
+│   │   │   │   ├── en.json
+│   │   │   │   └── es.json
+│   │   │   └── index.ts       # Exportaciones del Menu
+│   ├── assets/                # Recursos estáticos
+│   │   ├── images/            # Imágenes (logo, etc.)
+│   │   │   └── logo.png       # Logotipo de la página
+│   ├── App.tsx                # Componente raíz
+│   ├── main.tsx               # Punto de entrada
+├── .env                       # Variables de entorno comunes
+├── .env.development           # Variables específicas para desarrollo
+├── .env.production            # Variables específicas para producción
+├── package.json               # Dependencias del proyecto
+├── README.md                  # Documentación del proyecto
+├── tsconfig.json              # Configuración general de TypeScript
+├── vite.config.ts             # Configuración de Vite
+├── index.html                 # Archivo HTML principal
+├── src/vite-env.d.ts          # Tipos de Vite y TypeScript
+└── eslint.config.js           # Configuración de ESLint
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
-
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
-
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+. Comandos Útiles 
+npm run dev	:Levanta el servidor de desarrollo en localhost.
+npm run build	:Genera los archivos optimizados para producción.
+npm run preview	:Previsualiza el build generado en un servidor local.
+npm create vite siges_zeus_body: Crea el proyecto con la estructura de Vite 

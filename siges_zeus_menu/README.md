@@ -1,11 +1,12 @@
 Estoy creando mi proyecto que se llama Zeus: Sistema de Gestión. 
 Proyecto Implementara el Front con una arquitectura de Microfront y utiliaremos Vite + React + TS + Antd. El proyecto es generado con Vite.
 Ahorita nos estamos enfocando netamente en el UI y ya tenemos una estructura definida.
-Ya hemos creado el Microfront que sera el Header
+Ya hemos creado el Microfront que sera el Header y ahora estamos creando el microfront que sera el Menu Principal siges_zeus_menu que mostrara todos los modulos y opciones de Zeus.
 Esta es la estructura de Mi  microfront que tengo actualmente:
 
+Comando para crear proyecto Vite: npm create vite siges_zeus_menu
 
-siges_zeus_header/
+siges_zeus_menu/
 ├── public/                    # Archivos estáticos públicos
 ├── src/
 │   ├── shared/                # Recursos compartidos
@@ -16,13 +17,13 @@ siges_zeus_header/
 │   │   │   │   ├── en/common.json
 │   │   │   │   └── es/common.json
 │   ├── modules/               # Módulos funcionales
-│   │   ├── header/            # Módulo Header
-│   │   │   ├── components/    # Componentes específicos del Header
-│   │   │   │   └── Header.tsx
-│   │   │   ├── locales/       # Traducciones específicas del Header
+│   │   ├── menu/            # Módulo Menu
+│   │   │   ├── components/    # Componentes específicos del Menu
+│   │   │   │   └── Menu.tsx
+│   │   │   ├── locales/       # Traducciones específicas del Menu
 │   │   │   │   ├── en.json
 │   │   │   │   └── es.json
-│   │   │   └── index.ts       # Exportaciones del Header
+│   │   │   └── index.ts       # Exportaciones del Menu
 │   ├── assets/                # Recursos estáticos
 │   │   ├── images/            # Imágenes (logo, etc.)
 │   │   │   └── logo.png       # Logotipo de la página
@@ -41,6 +42,7 @@ siges_zeus_header/
 
 
 . Comandos Útiles 
-npm run dev	Levanta el servidor de desarrollo en localhost.
-npm run build	Genera los archivos optimizados para producción.
-npm run preview	Previsualiza el build generado en un servidor local.
+npm run dev	:Levanta el servidor de desarrollo en localhost.
+npm run build	:Genera los archivos optimizados para producción.
+npm run preview	:Previsualiza el build generado en un servidor local.
+npm create vite siges_zeus_menu: Crea el proyecto con la estructura de Vite 
