@@ -2,13 +2,13 @@ services:
   primary:
     image: postgres:15
     container_name: postgres_primary
-    user: postgres  # Asegura que PostgreSQL no se ejecute como root
+    user: ${SYSTEM_USER}  # Asegura que PostgreSQL no se ejecute como root
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin123
-      POSTGRES_DB: sigeszeus
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
     ports:
-      - "5432:5432"
+      - "${PRIMARY_PORT}:5432"
     volumes:
       - primary_data:/var/lib/postgresql/data
       - ./primary/postgresql.conf:/etc/postgresql/postgresql.conf
@@ -18,7 +18,7 @@ services:
     command:
       bash -c "/docker-entrypoint-initdb.d/setup_primary.sh && postgres -c config_file=/etc/postgresql/postgresql.conf"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin -d sigeszeus"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -26,15 +26,15 @@ services:
   replica:
     image: postgres:15
     container_name: postgres_replica
-    user: postgres  # Asegura que PostgreSQL no se ejecute como root
+    user: ${SYSTEM_USER}  # Asegura que PostgreSQL no se ejecute como root
     environment:
-      POSTGRES_USER: admin
-      POSTGRES_PASSWORD: admin123
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     depends_on:
       primary:
         condition: service_healthy
     ports:
-      - "5433:5432"
+      - "${REPLICA_PORT}:5432"
     volumes:
       - replica_data:/var/lib/postgresql/data
       - ./replica/postgresql.conf:/etc/postgresql/postgresql.conf
@@ -43,7 +43,7 @@ services:
     command:
       bash -c "/docker-entrypoint-initdb.d/setup_replica.sh && postgres"
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U admin"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
       interval: 10s
       timeout: 5s
       retries: 5

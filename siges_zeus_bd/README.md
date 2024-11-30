@@ -83,6 +83,7 @@ Recrea el Entorno: Vuelve a levantar los contenedores para que Docker cree un vo
 
 ****************VALIDAR DESPLIEGUE********************
 
+
 Pasos para Usar el Nuevo Código
 Detén y elimina el entorno actual:
 
@@ -125,3 +126,46 @@ Pasos para Cambiar a Replicación Asíncrona
 
     docker exec -it postgres_primary psql -U admin -c "SELECT * FROM pg_stat_replication;"
 En la columna sync_state, deberías ver async.
+
+**********************************************
+Verifica que PostgreSQL esté en ejecución en el nodo principal:
+
+bash
+Copiar código
+docker exec -it postgres_primary pg_isready -U admin -d sigeszeus
+Valida que el usuario y la base de datos estén configurados correctamente:
+
+bash
+Copiar código
+docker exec -it postgres_primary psql -U postgres -c "SELECT rolname FROM pg_roles;"
+docker exec -it postgres_primary psql -U postgres -c "SELECT datname FROM pg_database;
+******************************************
+
+
+**** VALIDAR REPLICACION ******
+
+Siguiente Paso: Validar los Datos
+Para confirmar que los datos están replicados correctamente en la base de datos primaria y las réplicas:
+
+1. Consultar la Base de Datos Principal
+Ejecuta el siguiente comando para consultar los datos en la base de datos principal (postgres_primary):
+
+    docker exec -it postgres_primary psql -U admin -d sigeszeus -c "SELECT * FROM replica_prueba.replica;"
+Debes ver algo como:
+
+plaintext
+Copiar código
+ id | nombre | apellido
+----+--------+----------
+  1 | Juan   | Pérez
+  2 | Ana    | López
+  3 | Carlos | Gómez
+(3 rows)
+2. Consultar la Base de Datos Réplica
+Ejecuta un comando similar en la réplica (postgres_replica) para verificar la replicación:
+
+    docker exec -it postgres_replica psql -U admin -d sigeszeus -c "SELECT * FROM replica_prueba.replica;"
+Deberías obtener los mismos resultados que en la base de datos principal. Si ves los datos, la replicación está funcionando correctamente.
+
+
+*******************************
